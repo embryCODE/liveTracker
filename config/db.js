@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: 'mongodb://localhost/mean_template'
+  url: 'mongodb://localhost/liveTracker'
 };

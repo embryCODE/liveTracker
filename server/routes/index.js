@@ -1,16 +1,11 @@
 'use strict';
 
-var path = require('path');
-var Thing = require('../models/thing');
+var router = require('express').Router();
 
-module.exports = function(app) {
-  // server routes
-  app.get('/api/things', function(req, res) {
-    res.send('This is a sample server route for the api.');
-  });
+// require routes
+var users = require('./users');
 
-  // angular route
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../../client', 'index.html'));
-  });
-};
+// use routes
+router.use('/api', users);
+
+module.exports = router;

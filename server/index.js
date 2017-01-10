@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var routes = require('./routes');
 
 var app = express();
 
@@ -14,6 +15,7 @@ var app = express();
 var db = require('../config/db');
 mongoose.connect(db.url);
 
+// middleware
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
@@ -22,8 +24,8 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
 
-// server routes
-require('../server/routes')(app);
+// mount router on /api
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
