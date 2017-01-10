@@ -1,0 +1,23 @@
+{
+  "name": "liveTracker",
+  "version": "1.0.0",
+  "description": "Capstone project for Treehouse Techdegree",
+  "author": "mason@embrycode.com",
+  "scripts": {
+    "start": "node ./server/bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/embryCODE/portfolio12_capstone.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.6",
+    "morgan": "~1.7.0"
+  }
+}
