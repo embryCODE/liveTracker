@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
+  spotifyId: String,
   email: String,
-  firstName: String,
-  lastName: String,
+  name: String,
   zip: Number,
   password: String,
   favArtists: [String]

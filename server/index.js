@@ -7,8 +7,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var passport = require('passport');
 var routes = require('./routes');
-
+var session = require('express-session');
 var app = express();
 
 // database connection
@@ -23,6 +24,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
+
+
+// session and passport
+app.use(session({ secret: 'mashtastic' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // mount router on /api
 app.use('/', routes);
