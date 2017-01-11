@@ -4,5 +4,5 @@ module.exports.authCheck = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/'); // Change this to the angular login page.
+  res.status(401).json('You must login to Spotify.');
 };

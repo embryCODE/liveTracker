@@ -40,7 +40,9 @@ passport.use(new SpotifyStrategy({
         User.create({
           spotifyId: profile.id,
           email: profile.emails[0].value,
-          name: profile.displayName
+          name: profile.displayName,
+          access_token: accessToken,
+          refresh_token: refreshToken
         }, function(err, results) {
           if (err) throw err;
         });
