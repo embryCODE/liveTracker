@@ -2,7 +2,7 @@
 
 module.exports = {
   jambase: {
-    api_key: 'EGVH44HB77MDFNT8V2FUNPFZ'
+    api_key: 'qp42qvjj5fezhevkpbz5ynub'
   },
   spotify: {
     client_id: 'a038f7d725304123a94e71ec30f6cd85',
