@@ -33,9 +33,20 @@ passport.use(new SpotifyStrategy({
         // error handler
         return done(err);
       if (results) {
-        // if user found, just return the user from the db
-        return done(null, results);
+
+        // if user found, updated record in db
+        User.findByIdAndUpdate(results.id, {
+          spotifyId: profile.id,
+          email: profile.emails[0].value,
+          name: profile.displayName,
+          access_token: accessToken,
+          refresh_token: refreshToken
+        }, function(err, results) {
+          if (err) throw err;
+          return done(null, results);
+        });
       } else {
+        
         // if no user found, create new user using data from api
         User.create({
           spotifyId: profile.id,
@@ -45,6 +56,7 @@ passport.use(new SpotifyStrategy({
           refresh_token: refreshToken
         }, function(err, results) {
           if (err) throw err;
+          return done(null, results);
         });
       }
     });

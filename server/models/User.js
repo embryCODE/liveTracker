@@ -10,7 +10,7 @@ var userSchema = new Schema({
   email: String,
   name: String,
   zip: Number,
-  favArtists: [String]
+  topArtists: [String]
 });
 
 var User = mongoose.model('User', userSchema);

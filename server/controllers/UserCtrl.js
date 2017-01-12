@@ -29,3 +29,16 @@ module.exports.getUser = function(req, res, next) {
       res.json(error);
     });
 };
+
+module.exports.addZip = function(req, res, next) {
+  User.findById(req.params.id)
+    .then(function(user) {
+      user.zip = parseInt(req.body.zip);
+      user.save(function(err, updatedUser) {
+        if (err) throw err;
+        res.json(updatedUser);
+      });
+    }).catch(function(error) {
+      res.json(error);
+    });
+};

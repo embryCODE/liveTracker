@@ -1,13 +1,18 @@
 'use strict';
 
 var router = require('express').Router();
-var ctrl = require('../controllers').UserCtrl;
+var userCtrl = require('../controllers').UserCtrl;
+var spotifyCtrl = require('../controllers').SpotifyCtrl;
 
 
-router.get('/users', ctrl.getAllUsers);
+router.get('/users', userCtrl.getAllUsers);
 
-router.post('/users', ctrl.createUser);
+router.post('/users', userCtrl.createUser);
 
-router.get('/users/:id', ctrl.getUser);
+router.get('/users/:id', userCtrl.getUser);
+
+router.post('/users/:id/add-zip', userCtrl.addZip);
+
+router.get('/users/:id/add-top-artists', spotifyCtrl.getUserTopArtists);
 
 module.exports = router;

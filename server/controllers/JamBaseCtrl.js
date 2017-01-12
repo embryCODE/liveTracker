@@ -1,7 +1,6 @@
 'use strict';
 
 var app = require('express');
-var request = require('request');
 
 
 
