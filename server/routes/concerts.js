@@ -1,13 +1,16 @@
 'use strict';
 
 var router = require('express').Router();
-var ctrl = require('../controllers').ConcertCtrl;
+var concertCtrl = require('../controllers').ConcertCtrl;
+var jamBaseCtrl = require('../controllers').JamBaseCtrl;
 
 
-router.get('/concerts', ctrl.getAllConcerts);
+router.get('/concerts', concertCtrl.getAllConcerts);
 
-router.post('/concerts', ctrl.createConcert);
+router.post('/concerts', concertCtrl.createConcert);
 
-router.get('/concerts/:id', ctrl.getConcert);
+router.get('/concerts/get-local-concerts', jamBaseCtrl.getLocalConcerts);
+
+router.get('/concerts/:id', concertCtrl.getConcert);
 
 module.exports = router;

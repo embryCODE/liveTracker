@@ -1,6 +1,8 @@
 'use strict';
 
 var app = require('express');
+var User = require('../models').User;
+var Concert = require('../models').Concert;
 
 
 
