@@ -35,7 +35,9 @@ module.exports.addZip = function(req, res, next) {
     .then(function(user) {
       user.zip = parseInt(req.body.zip);
       user.save(function(err, updatedUser) {
-        if (err) throw err;
+        if (err) {
+          res.json(err);
+        }
         res.json(updatedUser);
       });
     }).catch(function(error) {

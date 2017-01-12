@@ -46,7 +46,7 @@ passport.use(new SpotifyStrategy({
           return done(null, results);
         });
       } else {
-        
+
         // if no user found, create new user using data from api
         User.create({
           spotifyId: profile.id,

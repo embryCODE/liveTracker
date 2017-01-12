@@ -27,22 +27,24 @@ module.exports.getUserTopArtists = function(req, res, next) {
         })
         .then(function(spotifyResults) {
 
+          // add top artists names only to array
           spotifyResults.body.items.forEach(function(artist) {
             topArtists.push(artist.name);
           });
 
+          // add topArtists array to user's db entry
           user.topArtists = topArtists;
           user.save(function(err, updatedUser) {
-            if (err) throw err;
+            if (err) {
+              res.json(err);
+            }
             res.json(updatedUser);
           });
-        }, function(err) {
-          res.json(err);
+        }).catch(function(error) {
+          res.json(error);
         });
 
     }).catch(function(error) {
       res.json(error);
     });
-
-  // add those top artists to the user's database entry
 };
