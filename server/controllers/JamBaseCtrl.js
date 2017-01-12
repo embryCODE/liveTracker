@@ -16,3 +16,12 @@ module.exports.getLocalConcerts = function(req, res, next) {
 
   // return the array
 };
+
+// localConcerts: [
+//   {
+//     artist: String,
+//     venue: String,
+//     venueURL: String,
+//     date: Date
+//   }
+// ]

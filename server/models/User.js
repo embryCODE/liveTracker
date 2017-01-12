@@ -10,7 +10,15 @@ var userSchema = new Schema({
   email: String,
   name: String,
   zip: Number,
-  topArtists: [String]
+  topArtists: [String],
+  localConcerts: [
+    {
+      artist: String,
+      venue: String,
+      venueURL: String,
+      date: Date
+    }
+  ]
 });
 
 var User = mongoose.model('User', userSchema);
