@@ -4,7 +4,8 @@
   "description": "Capstone project for Treehouse Techdegree",
   "author": "mason@embrycode.com",
   "scripts": {
-    "start": "node ./server/bin/www"
+    "start": "node ./server/bin/www",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
