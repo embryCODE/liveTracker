@@ -47,6 +47,7 @@ module.exports.getLocalConcerts = function(req, res, next) {
           });
         }
 
+        // PROBLEM: this line will return before the async calls above finish. I think.
         res.json(localConcerts);
 
       });
@@ -56,18 +57,25 @@ module.exports.getLocalConcerts = function(req, res, next) {
     });
 
   // returns an array of found concerts. takes results from api and user object.
-  function checkConcertsForArtists(concerts, artists) {
+  function checkConcertsForArtists(concerts, dbArtists) {
     var concertList = [];
+
+    // for each concert, search the related artists array
     concerts.Events.forEach(function(event) {
-      event.Artists.forEach(function(artist) {
-        if (artists.indexOf(artist.Name) > -1) {
+      // for each artists array from the event,
+      // see if a name matches the artists array from the db
+      event.Artists.forEach(function(eventArtist) {
+        if (dbArtists.indexOf(eventArtist.Name) > -1) {
+
+          // if matched, create a new event with the event's data
           var newEvent = {
-            artist: artist.Name,
+            artist: eventArtist.Name,
             venue: event.Venue.Name,
             venueURL: event.Venue.Url,
             date: event.Date
           };
 
+          // add the new event to the concertList array
           concertList.push(newEvent);
         }
       });
@@ -75,12 +83,3 @@ module.exports.getLocalConcerts = function(req, res, next) {
     return concertList;
   }
 };
-
-// localConcerts: [
-//   {
-//     artist: String,
-//     venue: String,
-//     venueURL: String,
-//     date: Date
-//   }
-// ]
