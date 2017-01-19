@@ -1,8 +1,7 @@
-'use strict';
+'use strict'
 
-var passport = require('passport');
-var ctrl = require('../controllers').AuthCtrl;
-var router = require('express').Router();
+var passport = require('passport')
+var router = require('express').Router()
 
 // redirect to spotify for authentication
 router.get('/login',
@@ -10,7 +9,7 @@ router.get('/login',
     scope: ['user-read-email', 'user-read-private', 'user-top-read'],
     showDialog: true
   }),
-  function(req, res) {});
+  function (req, res) {})
 
 // return back here after spotify authentication
 router.get('/callback',
@@ -18,12 +17,12 @@ router.get('/callback',
     failureRedirect: '/',
     successRedirect: '/'
   })
-);
+)
 
 // logout and redirect to home page
-router.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/');
-});
+router.get('/logout', function (req, res) {
+  req.logout()
+  res.redirect('/')
+})
 
-module.exports = router;
+module.exports = router

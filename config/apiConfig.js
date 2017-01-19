@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   jambase: {
@@ -8,4 +8,4 @@ module.exports = {
     client_id: 'a038f7d725304123a94e71ec30f6cd85',
     client_secret: '742465860457443abd7faccc6e3df9f3'
   }
-};
+}

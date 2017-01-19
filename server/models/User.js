@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
 
 var userSchema = new Schema({
   spotifyId: String,
@@ -19,8 +19,8 @@ var userSchema = new Schema({
       date: Date
     }
   ]
-});
+})
 
-var User = mongoose.model('User', userSchema);
+var User = mongoose.model('User', userSchema)
 
-module.exports = User;
+module.exports = User

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-module.exports.authCheck = function(req, res, next) {
+module.exports.authCheck = function (req, res, next) {
   if (req.isAuthenticated()) {
-    return next();
+    return next()
   }
-  res.status(401).json('You must login to Spotify.');
-};
+  res.status(401).json('You must login to Spotify.')
+}
