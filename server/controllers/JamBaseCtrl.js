@@ -20,32 +20,40 @@ module.exports.getLocalConcerts = function (req, res, next) {
       var localConcerts = []
 
       // initial api call to get first page
-      jambase.getEventListBy_zipCode_radius_startDate_endDate(user.zip, 50, today, nextYear, 0, function (err, results) {
-        if (err) {
-          res.json(err)
-        }
+      jambase.getEventListBy_zipCode_radius_startDate_endDate(
+        user.zip, 50, today, nextYear, 0, function (err, results) {
+          if (err) {
+            res.json(err)
+          }
 
         // calculate necessary total pages
-        var pagesToQuery = Math.round(results.Info.TotalResults / 50)
+          var pagesToQuery = Math.round(results.Info.TotalResults / 50)
+          console.log(pagesToQuery)
 
         // add found concerts from first page to localConcerts array
-        localConcerts.concat(checkConcertsForArtists(results, user.topArtists))
+          localConcerts.concat(checkConcertsForArtists(results, user.topArtists))
 
         // loop through remaining pages, querying API for each page
-        for (var i = 1; i < pagesToQuery; i++) {
-          // query current page in loop
-          jambase.getEventListBy_zipCode_radius_startDate_endDate(user.zip, 50, today, nextYear, i, function (err, results) {
-            if (err) {
-              // handle error
-            }
-            // add found concerts from current page to localConcerts array
-            localConcerts.concat(checkConcertsForArtists(results, user.topArtists))
-          })
-        }
+          for (var i = 1; i < pagesToQuery; i++) {
+            (function (i) {
+              // query current page in loop
+              setTimeout(function () {
+                console.log(i)
+                jambase.getEventListBy_zipCode_radius_startDate_endDate(
+                user.zip, 50, today, nextYear, i, function (err, results) {
+                  if (err) {
+                  // handle error
+                  }
+                // add found concerts from current page to localConcerts array
+                  localConcerts.concat(checkConcertsForArtists(results, user.topArtists))
+                })
+              }, 3000 * i)
+            })(i)
+          }
 
         // PROBLEM: this line will return before the async calls above finish. I think.
-        res.json(localConcerts)
-      })
+          res.json(localConcerts)
+        })
     }).catch(function (error) {
       res.json(error)
     })
