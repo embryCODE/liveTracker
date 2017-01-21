@@ -25,7 +25,11 @@ app.use(methodOverride('X-HTTP-Method-Override'))
 app.use(express.static(path.join(__dirname, '../client')))
 
 // session and passport
-app.use(session({ secret: 'mashtastic' }))
+app.use(session({
+  secret: 'mashtastic',
+  resave: true,
+  saveUninitialized: true
+}))
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -41,14 +45,12 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  // render the error page
+  // send error status
   res.status(err.status || 500)
+  // send error message as JSON
   res.json({
     error: {
+      status: err.status,
       message: err.message
     }
   })

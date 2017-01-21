@@ -21,7 +21,7 @@ router.get('/callback',
 // logout and redirect to home page
 router.get('/logout', function (req, res) {
   req.logout()
-  res.redirect('/')
+  res.redirect('/#!/login')
 })
 
 module.exports = router
