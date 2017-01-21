@@ -3,8 +3,6 @@
 var passport = require('passport')
 var router = require('express').Router()
 
-require('../controllers').AuthCtrl
-
 // redirect to spotify for authentication
 router.get('/login',
   passport.authenticate('spotify', {

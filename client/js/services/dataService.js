@@ -5,6 +5,9 @@ var app = angular.module('liveTracker')
 // talk to back end and return requested data as JSON
 app.factory('serverData', ['$http', function ($http) {
   return {
+    getCurrentlyAuthorizedUser: function () {
+      return $http.get('/api/current-user')
+    },
     getAllUsers: function () {
       return $http.get('/api/users')
     },

@@ -3,6 +3,12 @@
 var User = require('../models').User
 
 module.exports.getCurrentUser = function (req, res, next) {
+  if (!req.user) {
+    var err = new Error('User is not authenticated.')
+    err.status = 401
+    return next(err)
+  }
+
   res.json(req.user)
 }
 

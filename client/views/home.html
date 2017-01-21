@@ -1,8 +1,47 @@
-<div class="jumbotron text-center">
-  <h1>Home</h1>
+<div>
+  <h3>Currently Authorized User:</h3>
 
-  <p>{{ test }}</p>
-  <pre>{{ allUsers }}</pre>
-
-  <pre ng-click="getCurrentUserById('5877c182f285680b809373e3')">{{ currentUser }}</pre>
+  <ul>
+    <li>
+      {{ currentUser.data.name }}
+    </li>
+    <li>
+      {{ currentUser.data.spotifyId }}
+    </li>
+    <li>
+      {{ currentUser.data.email }}
+    </li>
+    <li>
+      {{ currentUser.data.zip }}
+    </li>
+    <li>
+      <span>Top Artists:</span>
+      <ul>
+        <li ng-repeat="artist in currentUser.data.topArtists">
+          {{ artist }}
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span>Local Concerts:</span>
+      <ul>
+        <li ng-repeat="concert in currentUser.data.localConcerts">
+          <ul>
+            <li>
+              Artist: {{ concert.artist }}
+            </li>
+            <li>
+              Venue: {{ concert.venue }}
+            </li>
+            <li>
+              URL: {{ concert.venueURL }}
+            </li>
+            <li>
+              Date: {{ concert.date }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>

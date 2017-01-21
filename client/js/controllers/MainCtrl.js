@@ -2,18 +2,14 @@
 
 var app = angular.module('liveTracker')
 
-app.controller('MainCtrl', function ($scope, serverData) {
+app.controller('MainCtrl', function ($scope, $location, serverData) {
   $scope.test = 'This is a test of the mainCtrl scope.'
 
-  serverData.getAllUsers()
+  serverData.getCurrentlyAuthorizedUser()
     .then(function (response) {
-      $scope.allUsers = response
+      $scope.currentUser = response
+    }, function (err) {
+      console.log(err.status + ': No authorized user found. Redirecting to /login.')
+      $location.path('/login')
     })
-
-  $scope.getCurrentUserById = function (id) {
-    serverData.getUserById(id)
-      .then(function (response) {
-        $scope.currentUser = response
-      })
-  }
 })
