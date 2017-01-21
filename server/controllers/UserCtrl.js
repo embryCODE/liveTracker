@@ -2,6 +2,10 @@
 
 var User = require('../models').User
 
+module.exports.getCurrentUser = function (req, res, next) {
+  res.json(req.user)
+}
+
 module.exports.getAllUsers = function (req, res, next) {
   User.find()
     .then(function (results) {
@@ -11,8 +15,8 @@ module.exports.getAllUsers = function (req, res, next) {
     })
 }
 
-module.exports.createUser = function (req, res, next) {
-  User.create(req.body)
+module.exports.getUserById = function (req, res, next) {
+  User.findById(req.params.id)
     .then(function (results) {
       res.json(results)
     }).catch(function (error) {
@@ -20,8 +24,8 @@ module.exports.createUser = function (req, res, next) {
     })
 }
 
-module.exports.getUser = function (req, res, next) {
-  User.findById(req.params.id)
+module.exports.createUser = function (req, res, next) {
+  User.create(req.body)
     .then(function (results) {
       res.json(results)
     }).catch(function (error) {

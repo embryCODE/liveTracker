@@ -9,7 +9,7 @@ var spotifyAPI = new SpotifyWebAPI({
   redirectUri: 'http://localhost:3000/auth/callback'
 })
 
-module.exports.getUserTopArtists = function (req, res, next) {
+module.exports.setUserTopArtists = function (req, res, next) {
   var topArtists = []
 
   User.findById(req.params.id)

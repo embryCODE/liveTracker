@@ -2,7 +2,7 @@
 
 var User = require('../models').User
 
-module.exports.getLocalConcerts = function (req, res, next) {
+module.exports.setLocalConcerts = function (req, res, next) {
   // get list of all concerts near zip code from api
     // NOTE:
     // this is going to require quite a bit of code

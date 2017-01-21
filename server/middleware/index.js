@@ -1,8 +1,13 @@
 'use strict'
 
 module.exports.authCheck = function (req, res, next) {
-  if (req.isAuthenticated()) {
-    return next()
-  }
-  res.status(401).json('You must login to Spotify.')
+  // FAKE AUTHORIZATION BECAUSE I DON'T GET IT YET
+  return next()
+
+  // if (req.isAuthenticated()) {
+  //   console.log('Request is authenticated.')
+  //   return next()
+  // }
+  // console.log('Request is not authenticated.')
+  // res.status(401).json('You must login to Spotify.')
 }
