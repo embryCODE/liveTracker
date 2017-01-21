@@ -3,6 +3,8 @@
 var passport = require('passport')
 var router = require('express').Router()
 
+require('../controllers').AuthCtrl
+
 // redirect to spotify for authentication
 router.get('/login',
   passport.authenticate('spotify', {
@@ -13,11 +15,10 @@ router.get('/login',
 
 // return back here after spotify authentication
 router.get('/callback',
-  passport.authenticate('spotify', {
-    failureRedirect: '/',
-    successRedirect: '/'
+  passport.authenticate('spotify', { failureRedirect: '/#!/login' }),
+  function (req, res) {
+    res.redirect('/')
   })
-)
 
 // logout and redirect to home page
 router.get('/logout', function (req, res) {

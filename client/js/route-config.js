@@ -7,6 +7,11 @@ angular.module('liveTracker')
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .otherwise({ redirectTo: '/' })
 
     $locationProvider.html5Mode(true)
   }])

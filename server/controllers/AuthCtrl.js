@@ -12,8 +12,8 @@ passport.serializeUser(function (user, done) {
 })
 
 passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, result) {
-    done(err, result)
+  User.findById(id, function (err, user) {
+    done(err, user)
   })
 })
 
@@ -26,10 +26,8 @@ passport.use(new SpotifyStrategy({
     User.findOne({
       spotifyId: profile.id
     }, function (err, results) {
-      if (err) {
-        // error handler
-        return done(err)
-      }
+      if (err) return done(err)
+
       if (results) {
         // if user found, updated record in db
         User.findByIdAndUpdate(results.id, {

@@ -18,10 +18,10 @@ mongoose.connect(db.url)
 
 // middleware
 app.use(logger('dev'))
+app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride('X-HTTP-Method-Override'))
-app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../client')))
 
 // session and passport
@@ -29,7 +29,7 @@ app.use(session({ secret: 'mashtastic' }))
 app.use(passport.initialize())
 app.use(passport.session())
 
-// mount router on /api
+// routes
 app.use('/', routes)
 
 // catch 404 and forward to error handler
