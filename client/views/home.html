@@ -34,12 +34,42 @@
       </ul>
     </div>
 
-  </div> <!-- end ZIP CODE ENTRY -->
+  </div>
+  <!-- end ZIP CODE ENTRY -->
 
   <!-- MAIN SECTION -->
   <!-- display zip code found -->
-  <div ng-if="currentUser.zip">
-    <h3>Currently Authorized User:</h3>
+  <div ng-if="currentUser.zip" class="row">
+
+    <div class="col-md-3">
+      <h3>Profile</h3>
+      <hr>
+      <h4 class="profile-name">{{ currentUser.name }}<small> {{ currentUser.spotifyId }}</small></h4>
+      <h4>Top Artists</h4>
+      <ul class="list-unstyled top-artists-list">
+        <li ng-repeat="artist in currentUser.topArtists">
+          {{ artist }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-sm-9">
+      <h3>Local Concerts</h3>
+      <hr>
+      <p>
+        Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
+      </p>
+      <ul class="list-unstyled concert-list">
+        <li ng-repeat="concert in currentUser.localConcerts">
+          <p class="lead">
+            {{ concert.date | date }} - {{ concert.artist }} at <a ng-href="concert.venueURL">{{ concert.venue }}</a>
+          </p>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- <h3>Currently Authorized User:</h3>
 
     <ul>
       <li>
@@ -83,7 +113,9 @@
           </li>
         </ul>
       </li>
-    </ul>
-  </div> <!-- end MAIN SECTION -->
+    </ul> -->
+
+  </div>
+  <!-- end MAIN SECTION -->
 
 </div>
