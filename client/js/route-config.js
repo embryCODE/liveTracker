@@ -13,5 +13,6 @@ angular.module('liveTracker')
       })
       .otherwise({ redirectTo: '/' })
 
+    // removes '#!' from url
     $locationProvider.html5Mode(true)
   }])

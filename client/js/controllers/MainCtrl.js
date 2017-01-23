@@ -12,12 +12,12 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
       $location.path('/login')
     })
 
-  $scope.addZip = function (id, zipParam) {
-    apiService.addZipCodeToUser(id, zipParam)
+  $scope.addZip = function (id, zipToAdd) {
+    apiService.addZipCodeToUser(id, zipToAdd)
       .then(function () {
-        $scope.currentUser.zip = zipParam
+        // zip is added directly to scope so no page refresh is needed
+        $scope.currentUser.zip = zipToAdd
       }, function (err) {
-        // handle this error better
         console.log(err)
       })
   }
