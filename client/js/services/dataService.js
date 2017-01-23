@@ -17,9 +17,9 @@ app.factory('apiService', ['$http', function ($http) {
     addTopArtistsToUser: function (id) {
       return $http.post('/api/users/' + id + '/set-top-artists')
     },
-    addZipCodeToUser: function (id, zip) {
+    addZipCodeToUser: function (id, zipParam) {
       return $http.post('/api/users/' + id + '/set-zip', {
-        'zip': 37214
+        'zip': zipParam
       })
     },
     addLocalConcertsToUser: function (id) {
