@@ -3,7 +3,7 @@
 var app = angular.module('liveTracker')
 
 // talk to back end and return requested data as JSON
-app.factory('serverData', ['$http', function ($http) {
+app.factory('apiService', ['$http', function ($http) {
   return {
     getCurrentlyAuthorizedUser: function () {
       return $http.get('/api/current-user')
@@ -17,8 +17,10 @@ app.factory('serverData', ['$http', function ($http) {
     addTopArtistsToUser: function (id) {
       return $http.post('/api/users/' + id + '/set-top-artists')
     },
-    addZipCodeToUser: function (id) {
-      return $http.post('/api/users/' + id + '/set-zip')
+    addZipCodeToUser: function (id, zip) {
+      return $http.post('/api/users/' + id + '/set-zip', {
+        'zip': 37214
+      })
     },
     addLocalConcertsToUser: function (id) {
       return $http.post('/api/users/' + id + '/set-local-concerts')

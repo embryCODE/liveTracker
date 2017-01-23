@@ -28,22 +28,29 @@
 </head>
 
 <body ng-app="liveTracker" ng-controller="MainCtrl">
-  <div class="container">
 
-    <!-- HEADER -->
-    <nav class="navbar navbar-inverse">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">liveTracker</a>
+  <!-- HEADER -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="navbar-header col-xs-2">
+          <a class="navbar-brand" href="/">liveTracker</a>
+        </div>
+
+        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+        <div class="col-xs-2 col-xs-offset-8">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/auth/logout" target="_self">Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </div>
+  </nav>
 
-      <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-      <ul class="nav navbar-nav">
-        <li><!-- links go here --></li>
-      </ul>
-    </nav>
-
-    <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
+  <!-- ANGULAR DYNAMIC CONTENT -->
+  <div ng-view></div>
 
   </div>
 </body>

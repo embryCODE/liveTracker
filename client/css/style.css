@@ -1,1 +1,5 @@
 
+/* body padding to compensate for sticky nav */
+body {
+  padding-top: 60px;
+}

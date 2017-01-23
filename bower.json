@@ -2,10 +2,10 @@
   "name": "livetracker",
   "version": "1.0.0",
   "dependencies": {
-    "bootstrap": "latest",
     "font-awesome": "latest",
     "animate.css": "latest",
     "angular": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "bootstrap": "^3.3.7"
   }
 }
