@@ -2,7 +2,7 @@
 
   <!-- ZIP CODE ENTRY -->
   <!-- display if no zip code found -->
-  <div ng-hide="currentUser.zip">
+  <div ng-if="!currentUser.zip">
 
     <h3>Almost there!</h3>
 
@@ -38,7 +38,7 @@
 
   <!-- MAIN SECTION -->
   <!-- display zip code found -->
-  <div ng-show="currentUser.zip">
+  <div ng-if="currentUser.zip">
     <h3>Currently Authorized User:</h3>
 
     <ul>
