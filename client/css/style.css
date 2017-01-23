@@ -3,3 +3,11 @@
 body {
   padding-top: 60px;
 }
+
+#zip-form, .zip-btn {
+  width: 200px;
+}
+
+#zip-form {
+  margin-bottom: 15px;
+}

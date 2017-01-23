@@ -1,17 +1,43 @@
 <div class="container">
 
+  <!-- ZIP CODE ENTRY -->
+  <!-- display if no zip code found -->
   <div ng-hide="currentUser.zip">
-    <p>
-      Gonna have to enter a damn zip code, chief.
-    </p>
-    <form class="form-inline">
+
+    <h3>Almost there!</h3>
+
+    <form class="form-horizontal">
+
       <div class="form-group">
-        <input ng-model="zip" type="text" class="form-control" placeholder="Damn zip code">
-        <button ng-click="addZip(currentUser._id, zip)" type="submit" class="btn btn-default">Submit</button>
+        <div class="col-sm-6">
+          <p>
+            Great, you've logged in to your Spotify account and we've grabbed your favorite artists. Now we just need to get your zip code and we can check for local shows!
+          </p>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-2">
+          <label for="zip-form" class="sr-only">Enter zip code</label>
+          <input ng-model="zip" type="text" class="form-control" id="zip-form" placeholder="Enter zip code">
+        </div>
+        <div class="col-sm-4 col-sm-offset-2">
+          <button ng-click="addZip(currentUser._id, zip)" type="submit" class="btn btn-primary zip-btn">Check for shows!</button>
+        </div>
       </div>
     </form>
-  </div>
 
+    <div>
+      <h3>Your top 20 artists:</h3>
+      <ul class="list-inline">
+        <li ng-repeat="artist in currentUser.topArtists">
+          {{ artist }}
+        </li>
+      </ul>
+    </div>
+
+  </div> <!-- end ZIP CODE ENTRY -->
+
+  <!-- MAIN SECTION -->
+  <!-- display zip code found -->
   <div ng-show="currentUser.zip">
     <h3>Currently Authorized User:</h3>
 
@@ -58,6 +84,6 @@
         </ul>
       </li>
     </ul>
-  </div>
+  </div> <!-- end MAIN SECTION -->
 
 </div>
