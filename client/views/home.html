@@ -6,27 +6,28 @@
 
     <h3>Almost there!</h3>
 
-    <form class="form-horizontal">
+    <form name="form" class="form-horizontal">
 
       <div class="form-group">
+        
         <div class="col-sm-6">
           <p>
-            Great, you've logged in to your Spotify account and we've grabbed
-            your favorite artists. Now we just need to get your zip code and
-            we can check for local shows!
+            Great, you've logged in to your Spotify account and we've grabbed your favorite artists. Now we just need to get your zip code and we can check for local shows!
           </p>
         </div>
 
         <div class="col-sm-4 col-sm-offset-2">
           <label for="zip-form" class="sr-only">Enter zip code</label>
-          <input ng-model="zip" type="text" class="form-control" id="zip-form"
-                 placeholder="Enter zip code">
+          <input ng-model="zip" type="text" class="form-control" name="zip" id="zip-form" placeholder="Enter zip code" ng-pattern="/(\d{5}([-]\d{4})?)/" required="">
+          <div class="zip-validation-error" ng-show="form.zip.$dirty && form.zip.$invalid">
+            <span>Valid zip code required</span>
+          </div>
+          <button ng-click="addZip(currentUser._id, zip)" type="submit" class="btn btn-primary zip-btn">Check for shows!
+          </button>
         </div>
-        <div class="col-sm-4 col-sm-offset-2">
-          <button ng-click="addZip(currentUser._id, zip)" type="submit"
-                  class="btn btn-primary zip-btn">Check for shows!</button>
-        </div>
+
       </div>
+
     </form>
 
     <div>
@@ -65,19 +66,17 @@
       <p>
         Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
       </p>
-      <ul ng-repeat="concert in currentUser.localConcerts | orderBy: 'date'"
-          class="list-unstyled concert-list">
+      <ul ng-repeat="concert in currentUser.localConcerts | orderBy: 'date'" class="list-unstyled concert-list">
         <li>
           <p class="lead">
             {{ concert.date | date }} - {{ concert.artist }} at
-            <a
-              ng-href="concert.venueURL">{{ concert.venue }}
+            <a ng-href="concert.venueURL">{{ concert.venue }}
             </a>
           </p>
         </li>
       </ul>
     </div>
-    
+
   </div>
   <!-- end MAIN SECTION -->
 

@@ -9,7 +9,17 @@ var userSchema = new Schema({
   refresh_token: String,
   email: String,
   name: String,
-  zip: Number,
+  zip: {
+    type: String,
+    trim: true,
+    // Custom validation for zip code format.
+    validate: {
+      validator: function (zip) {
+        return /(\d{5}([-]\d{4})?)/.test(zip)
+      },
+      message: 'Must be a valid zip code.'
+    }
+  },
   topArtists: [String],
   localConcerts: [
     {

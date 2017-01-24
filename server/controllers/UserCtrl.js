@@ -42,11 +42,9 @@ module.exports.createUser = function (req, res, next) {
 module.exports.addZip = function (req, res, next) {
   User.findById(req.params.id)
     .then(function (user) {
-      user.zip = parseInt(req.body.zip)
+      user.zip = req.body.zip
       user.save(function (err, updatedUser) {
-        if (err) {
-          res.json(err)
-        }
+        if (err) return next(err)
         res.json(updatedUser)
       })
     }).catch(function (error) {

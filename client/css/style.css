@@ -4,12 +4,12 @@ body {
   padding-top: 60px;
 }
 
-#zip-form, .zip-btn {
+#zip-form, .zip-btn, .zip-validation-error {
   width: 200px;
 }
 
 #zip-form {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .profile-name {
@@ -22,4 +22,9 @@ body {
 
 .concert-list {
   margin-top: 15px;
+}
+
+.zip-validation-error {
+  color: red;
+  margin-bottom: 10px;
 }
