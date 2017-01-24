@@ -59,7 +59,7 @@
       <p>
         Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
       </p>
-      <ul ng-repeat="concert in currentUser.localConcerts | orderBy: 'currentUser.localConcerts.date'" class="list-unstyled concert-list">
+      <ul ng-repeat="concert in currentUser.localConcerts | orderBy: 'date'" class="list-unstyled concert-list">
         <li>
           <p class="lead">
             {{ concert.date | date }} - {{ concert.artist }} at <a ng-href="concert.venueURL">{{ concert.venue }}</a>
