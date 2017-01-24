@@ -11,16 +11,20 @@
       <div class="form-group">
         <div class="col-sm-6">
           <p>
-            Great, you've logged in to your Spotify account and we've grabbed your favorite artists. Now we just need to get your zip code and we can check for local shows!
+            Great, you've logged in to your Spotify account and we've grabbed
+            your favorite artists. Now we just need to get your zip code and
+            we can check for local shows!
           </p>
         </div>
 
         <div class="col-sm-4 col-sm-offset-2">
           <label for="zip-form" class="sr-only">Enter zip code</label>
-          <input ng-model="zip" type="text" class="form-control" id="zip-form" placeholder="Enter zip code">
+          <input ng-model="zip" type="text" class="form-control" id="zip-form"
+                 placeholder="Enter zip code">
         </div>
         <div class="col-sm-4 col-sm-offset-2">
-          <button ng-click="addZip(currentUser._id, zip)" type="submit" class="btn btn-primary zip-btn">Check for shows!</button>
+          <button ng-click="addZip(currentUser._id, zip)" type="submit"
+                  class="btn btn-primary zip-btn">Check for shows!</button>
         </div>
       </div>
     </form>
@@ -44,7 +48,9 @@
     <div class="col-md-3">
       <h3>Profile</h3>
       <hr>
-      <h4 class="profile-name">{{ currentUser.name }}<small> {{ currentUser.spotifyId }}</small></h4>
+      <h4 class="profile-name">{{ currentUser.name }}
+        <small> {{ currentUser.spotifyId }}</small>
+      </h4>
       <h4>Top Artists</h4>
       <ul class="list-unstyled top-artists-list">
         <li ng-repeat="artist in currentUser.topArtists">
@@ -59,62 +65,19 @@
       <p>
         Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
       </p>
-      <ul ng-repeat="concert in currentUser.localConcerts | orderBy: 'date'" class="list-unstyled concert-list">
+      <ul ng-repeat="concert in currentUser.localConcerts | orderBy: 'date'"
+          class="list-unstyled concert-list">
         <li>
           <p class="lead">
-            {{ concert.date | date }} - {{ concert.artist }} at <a ng-href="concert.venueURL">{{ concert.venue }}</a>
+            {{ concert.date | date }} - {{ concert.artist }} at
+            <a
+              ng-href="concert.venueURL">{{ concert.venue }}
+            </a>
           </p>
         </li>
       </ul>
-
     </div>
-
-    <!-- <h3>Currently Authorized User:</h3>
-
-    <ul>
-      <li>
-        {{ currentUser.name }}
-      </li>
-      <li>
-        {{ currentUser.spotifyId }}
-      </li>
-      <li>
-        {{ currentUser.email }}
-      </li>
-      <li>
-        {{ currentUser.zip }}
-      </li>
-      <li>
-        <span>Top Artists:</span>
-        <ul>
-          <li ng-repeat="artist in currentUser.topArtists">
-            {{ artist }}
-          </li>
-        </ul>
-      </li>
-      <li>
-        <span>Local Concerts:</span>
-        <ul>
-          <li ng-repeat="concert in currentUser.localConcerts">
-            <ul>
-              <li>
-                Artist: {{ concert.artist }}
-              </li>
-              <li>
-                Venue: {{ concert.venue }}
-              </li>
-              <li>
-                URL: {{ concert.venueURL }}
-              </li>
-              <li>
-                Date: {{ concert.date }}
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul> -->
-
+    
   </div>
   <!-- end MAIN SECTION -->
 
