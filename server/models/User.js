@@ -20,15 +20,7 @@ var userSchema = new Schema({
       message: 'Must be a valid zip code.'
     }
   },
-  topArtists: [String],
-  localConcerts: [
-    {
-      artist: String,
-      venue: String,
-      venueURL: String,
-      date: Date
-    }
-  ]
+  topArtists: [String]
 })
 
 var User = mongoose.model('User', userSchema)
