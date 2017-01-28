@@ -22,8 +22,10 @@ app.factory('apiService', ['$http', function ($http) {
         'zip': zipToAdd
       })
     },
-    addLocalConcertsToUser: function (id) {
-      return $http.post('/api/users/' + id + '/set-local-concerts')
+    getLocalConcerts: function (artistName, zip) {
+      return $http.get('/api/users/get-local-concerts', {
+        params: { 'artist': artistName, 'zip': zip }
+      })
     }
   }
 }])

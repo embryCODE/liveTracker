@@ -9,7 +9,7 @@
     <form name="form" class="form-horizontal">
 
       <div class="form-group">
-        
+
         <div class="col-sm-6">
           <p>
             Great, you've logged in to your Spotify account and we've grabbed your favorite artists. Now we just need to get your zip code and we can check for local shows!
@@ -55,7 +55,7 @@
       <h4>Top Artists</h4>
       <ul class="list-unstyled top-artists-list">
         <li ng-repeat="artist in currentUser.topArtists">
-          {{ artist }}
+          <button ng-click="getLocalConcerts(artist, currentUser.zip)">{{ artist }}</button>
         </li>
       </ul>
     </div>
@@ -63,18 +63,28 @@
     <div class="col-sm-9">
       <h3>Local Concerts</h3>
       <hr>
-      <p>
-        Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
-      </p>
-      <ul ng-repeat="concert in currentUser.localConcerts | orderBy: 'date'" class="list-unstyled concert-list">
-        <li>
-          <p class="lead">
-            {{ concert.date | date }} - {{ concert.artist }} at
-            <a ng-href="concert.venueURL">{{ concert.venue }}
-            </a>
-          </p>
-        </li>
-      </ul>
+
+      <div ng-hide="localConcerts">
+        <p>
+          Sorry, no concerts found.
+        </p>
+      </div>
+
+      <div ng-show="localConcerts">
+        <p>
+          Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
+        </p>
+        <ul ng-repeat="concert in localConcerts | orderBy: 'date'" class="list-unstyled concert-list">
+          <li>
+            <p class="lead">
+              {{ concert.date | date }} - {{ concert.name }} at
+              <a ng-href="concert.venueURL">{{ concert.venue }}
+              </a>
+            </p>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
   </div>

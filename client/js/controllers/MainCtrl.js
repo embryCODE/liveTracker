@@ -8,20 +8,11 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
     .then(function (response) {
       apiService.addTopArtistsToUser(response.data._id)
         .then(function (response) {
-          // if a zip code exists on the user, add local concerts to user
-          if (response.data.zip) {
-            apiService.addLocalConcertsToUser(response.data._id)
-              .then(function (response) {
-                $scope.currentUser = response.data
-              }, function (err) {
-                console.log(err)
-              })
-          } else {
-            $scope.currentUser = response.data
-          }
+          $scope.currentUser = response.data
         }, function (err) {
           console.log(err)
-        })
+        }
+      )
     }, function (err) {
       console.log(err.status + ': No authorized user found. Redirecting to /login.')
       $location.path('/login')
@@ -30,13 +21,17 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
   $scope.addZip = function (id, zipToAdd) {
     apiService.addZipCodeToUser(id, zipToAdd)
       .then(function (response) {
-        // after adding zip code to user, add local concerts to user
-        apiService.addLocalConcertsToUser($scope.currentUser._id)
-          .then(function (response) {
-            $scope.currentUser = response.data
-          }, function (err) {
-            console.log(err)
-          })
+        $scope.currentUser = response.data
+      }, function (err) {
+        console.log(err)
+      }
+    )
+  }
+
+  $scope.getLocalConcerts = function (artistName, zip) {
+    apiService.getLocalConcerts(artistName, zip)
+      .then(function (response) {
+        $scope.localConcerts = response.data
       }, function (err) {
         console.log(err)
       })
