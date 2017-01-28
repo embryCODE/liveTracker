@@ -29,9 +29,13 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
   }
 
   $scope.getLocalConcerts = function (artistName, zip) {
+    $scope.localConcerts = []
+
     apiService.getLocalConcerts(artistName, zip)
       .then(function (response) {
-        $scope.localConcerts = response.data
+        if (response.data.length > 0) {
+          $scope.localConcerts = response.data
+        }
       }, function (err) {
         console.log(err)
       })

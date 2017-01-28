@@ -55,7 +55,7 @@
       <h4>Top Artists</h4>
       <ul class="list-unstyled top-artists-list">
         <li ng-repeat="artist in currentUser.topArtists">
-          <button ng-click="getLocalConcerts(artist, currentUser.zip)">{{ artist }}</button>
+          <button class="btn btn-default" ng-click="getLocalConcerts(artist, currentUser.zip)">{{ artist }}</button>
         </li>
       </ul>
     </div>
@@ -64,13 +64,13 @@
       <h3>Local Concerts</h3>
       <hr>
 
-      <div ng-hide="localConcerts">
+      <div ng-hide="localConcerts.length > 0">
         <p>
           Sorry, no concerts found.
         </p>
       </div>
 
-      <div ng-show="localConcerts">
+      <div ng-show="localConcerts.length > 0">
         <p>
           Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
         </p>

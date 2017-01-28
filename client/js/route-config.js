@@ -8,8 +8,7 @@ angular.module('liveTracker')
         controller: 'MainCtrl'
       })
       .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: 'views/login.html'
       })
       .otherwise({ redirectTo: '/' })
 

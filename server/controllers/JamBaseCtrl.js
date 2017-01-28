@@ -17,18 +17,19 @@ module.exports.getLocalConcerts = function (req, res, next) {
   jambase.getArtistBy_name(artistName, 0, function (err, response) {
     if (err) return next(err)
 
-    // save artist id that was just looked up
-    var artistId = response.Artists[0].Id
-    var zip = parseInt(req.query.zip)
+    if (response.Artists.length > 0) {
+      // save artist id that was just looked up
+      var artistId = response.Artists[0].Id
+      var zip = parseInt(req.query.zip)
 
-    jambase.getEventListBy_artistId_zipCode_radius_startDate_endDate(
-      artistId, zip, 50, today, nextYear, 0, function (err, response) {
-        if (err) return next(err)
-
-        // formats concerts from response to only the data needed
-        var concertList = formatConcerts(artistName, response)
-        res.send(concertList)
-      })
+      jambase.getEventListBy_artistId_zipCode_radius_startDate_endDate(
+        artistId, zip, 50, today, nextYear, 0, function (err, response) {
+          if (err) return next(err)
+          // formats concerts from response to only the data needed
+          var concertList = formatConcerts(artistName, response)
+          res.send(concertList)
+        })
+    }
   })
 }
 
