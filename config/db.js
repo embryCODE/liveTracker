@@ -1,5 +1,7 @@
+// enter your database info below
+
 'use strict'
 
 module.exports = {
-  url: 'mongodb://localhost/liveTracker'
+  url: 'CONNECTION TO YOUR LOCAL MONGO DATABASE'
 }
