@@ -2,90 +2,104 @@
 
   <!-- ZIP CODE ENTRY -->
   <!-- display if no zip code found -->
-  <div ng-if="!currentUser.zip">
+  <div ng-if="!currentUser.zip" class="zip-section">
 
-    <h3>Almost there!</h3>
 
-    <form name="form" class="form-horizontal">
+    <div class="row">
 
-      <div class="form-group">
 
-        <div class="col-sm-6">
-          <p>
-            Great, you've logged in to your Spotify account and we've grabbed your favorite artists. Now we just need to get your zip code and we can check for local shows!
-          </p>
-        </div>
-
-        <div class="col-sm-4 col-sm-offset-2">
-          <label for="zip-form" class="sr-only">Enter zip code</label>
-          <input ng-model="zip" type="text" class="form-control" name="zip" id="zip-form" placeholder="Enter zip code" ng-pattern="/(\d{5}([-]\d{4})?)/" required="">
-          <div class="zip-validation-error" ng-show="form.zip.$dirty && form.zip.$invalid">
-            <span>Valid zip code required</span>
-          </div>
-          <button ng-click="addZip(currentUser._id, zip)" type="submit" class="btn btn-primary zip-btn">Check for shows!
-          </button>
-        </div>
-
+      <div class="col-sm-6">
+        <img class="img-responsive img-rounded" src="img/crowd-purple-web.jpg">
       </div>
 
-    </form>
+      <form name="form" class="col-sm-5 col-sm-offset-1">
 
-    <div>
-      <h3>Your top 20 artists:</h3>
-      <ul class="list-inline">
-        <li ng-repeat="artist in currentUser.topArtists">
-          {{ artist }}
-        </li>
-      </ul>
+        <h2>Almost there!</h2>
+
+        <div class="form-group">
+
+          <div>
+            <p>
+              Great, you've logged in to your Spotify account and we've grabbed your favorite artists. Now we just need to get your zip code and we can check for local shows!
+            </p>
+          </div>
+
+          <div>
+            <label for="zip-form" class="sr-only">Enter zip code</label>
+            <input ng-model="zip" type="text" class="form-control" name="zip" id="zip-form" placeholder="Enter zip code" ng-pattern="/(\d{5}([-]\d{4})?)/" required="">
+            <div class="zip-validation-error" ng-show="form.zip.$dirty && form.zip.$invalid">
+              <span>Valid zip code required</span>
+            </div>
+            <button ng-click="addZip(currentUser._id, zip)" type="submit" class="btn btn-primary zip-btn">Check for shows!
+              </button>
+          </div>
+
+        </div>
+      </form>
+
+
     </div>
+
+    <div class="zip-top-20 row text-center">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h3>Your top 20 Spotify artists</h3>
+        <ul class="list-inline">
+          <li ng-repeat="artist in currentUser.topArtists">
+            {{ artist }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
 
   </div>
   <!-- end ZIP CODE ENTRY -->
 
   <!-- MAIN SECTION -->
-  <!-- display zip code found -->
-  <div ng-if="currentUser.zip" class="row">
+  <!-- display if zip code found -->
+  <div ng-if="currentUser.zip" class="select-section">
 
-    <div class="col-md-3">
-      <h3>Profile</h3>
-      <hr>
-      <h4 class="profile-name">{{ currentUser.name }}
-        <small> {{ currentUser.spotifyId }}</small>
-      </h4>
-      <h4>Top Artists</h4>
-      <ul class="list-unstyled top-artists-list">
-        <li ng-repeat="artist in currentUser.topArtists">
-          <button class="btn btn-default" ng-click="getLocalConcerts(artist, currentUser.zip)">{{ artist }}</button>
-        </li>
-      </ul>
-      <h4>Custom</h4>
-      <form name="customArtistForm">
+    <div class="row">
 
-        <div class="form-group">
+      <div class="col-sm-5">
+        <h2 class="profile-name">{{ currentUser.name }}
+          <small> {{ currentUser.spotifyId }}</small>
+        </h2>
+        <hr>
+        <p>
+          Awesome! You are logged into Spotify and we have your zip code and top 20 Spotify artists.
+        </p>
+        <p>
+          Choose an artist from the dropdown menu below or do a custom search.
+        </p>
+        <h4>Top Spotify artists</h4>
+        <select ng-model="artistToBeSearched" ng-change="getLocalConcerts(artistToBeSearched, currentUser.zip)" ng-options="artist for artist in currentUser.topArtists">
+          <option value="" disabled>Select an artist</option>
+        </select>
+        <h4>Custom search</h4>
+        <form name="customArtistForm">
 
-            <p>
-              Enter an artist to search.
-            </p>
+          <div class="form-group">
 
             <div class="form-inline">
               <label for="custom-search" class="sr-only">Custom artist search</label>
-              <input ng-model="artistToBeSearched" type="text"
-                     class="form-control"
-                     name="customArtistName"
-                     placeholder="{{ artistJustSearched }}"
-                     id="custom-search">
-              <button ng-click="getLocalConcerts(artistToBeSearched, currentUser.zip)"
-                      type="submit"
-                      class="btn btn-primary">Search</button>
+              <input ng-model="artistToBeSearched" type="text" class="form-control" name="customArtistName" placeholder="{{ artistJustSearched || 'Enter an artist'}} " id="custom-search">
+              <button ng-click="getLocalConcerts(artistToBeSearched, currentUser.zip)" type="submit" class="btn btn-primary">Search</button>
             </div>
 
-        </div>
+          </div>
 
-      </form>
+        </form>
+      </div>
+      <div class="col-sm-7">
+        <img class="main-img img-responsive img-rounded" src="img/crowd-black-web.jpg">
+      </div>
+
     </div>
 
-    <div class="col-sm-9">
-      <h3>Local Concerts</h3>
+    <div class="local-concerts">
+      <h3>Concerts near {{ currentUser.zip }}</h3>
       <hr>
 
       <div ng-hide="localConcerts.length > 0">
@@ -98,9 +112,6 @@
       </div>
 
       <div ng-show="localConcerts.length > 0">
-        <p>
-          Here is a list of {{ artistJustSearched }} concerts within 50 miles of {{ currentUser.zip }}.
-        </p>
         <ul ng-repeat="concert in localConcerts | orderBy: 'date'" class="list-unstyled concert-list">
           <li>
             <p class="lead">
@@ -113,8 +124,6 @@
       </div>
 
     </div>
-
   </div>
   <!-- end MAIN SECTION -->
-
 </div>
