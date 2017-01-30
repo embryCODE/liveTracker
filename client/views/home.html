@@ -116,7 +116,7 @@
           <li>
             <p class="lead">
               {{ concert.date | date }} - {{ concert.name }} at
-              <a ng-href="concert.venueURL">{{ concert.venue }}
+              <a ng-href="{{ concert.venueURL }}">{{ concert.venue }}
               </a>
             </p>
           </li>
