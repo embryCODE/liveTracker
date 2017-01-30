@@ -10,12 +10,19 @@ var mock = true
 
 // if mock is true, just send mock data. otherwise, talk to jambase.
 if (mock) {
-  module.exports.getLocalConcerts = function returnMockData () {
-    return mockData
+  module.exports.getLocalConcerts = function (req, res, next) {
+    console.log(req.query.artist)
+    if (req.query.artist === 'Chris Young') {
+      res.json(mockData)
+    } else {
+      res.json({
+        message: 'No artists by that name found in JamBase.'
+      })
+    }
   }
 } else {
   // get local concerts using data.zip and data.artistName on req object
-  module.exports.getLocalConcerts = function (req, res, next) {
+  module.exports.getLocalConcerts = function getLocalConcerts (req, res, next) {
     // set date variables
     var today = new Date().toISOString()
     var nextYear = new Date()

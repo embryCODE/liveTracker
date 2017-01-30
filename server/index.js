@@ -13,6 +13,7 @@ var session = require('express-session')
 var app = express()
 
 // database connection
+mongoose.Promise = global.Promise
 var db = require('../config/db')
 mongoose.connect(db.url)
 

@@ -65,8 +65,11 @@
       <hr>
 
       <div ng-hide="localConcerts.length > 0">
-        <p>
-          Sorry, no concerts found.
+        <p ng-if="artistBeingSearched">
+          Sorry, no concerts found for {{ artistBeingSearched }}.
+        </p>
+        <p ng-if="!artistBeingSearched">
+          Your search results will appear here.
         </p>
       </div>
 

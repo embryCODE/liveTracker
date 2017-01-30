@@ -29,6 +29,7 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
   }
 
   $scope.getLocalConcerts = function (artistName, zip) {
+    $scope.artistBeingSearched = artistName
     $scope.localConcerts = []
 
     apiService.getLocalConcerts(artistName, zip)
