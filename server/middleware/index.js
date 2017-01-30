@@ -1,8 +1,8 @@
 'use strict'
 
 module.exports.authCheck = function (req, res, next) {
-  // disable authorization for testing
-  return next()
+  // uncomment next line to disable authorization for testing
+  // return next()
 
   if (req.isAuthenticated()) {
     console.log('Request is authenticated.')
