@@ -58,6 +58,30 @@
           <button class="btn btn-default" ng-click="getLocalConcerts(artist, currentUser.zip)">{{ artist }}</button>
         </li>
       </ul>
+      <h4>Custom</h4>
+      <form name="customArtistForm">
+
+        <div class="form-group">
+
+            <p>
+              Enter an artist to search.
+            </p>
+
+            <div class="form-inline">
+              <label for="custom-search" class="sr-only">Custom artist search</label>
+              <input ng-model="artistToBeSearched" type="text"
+                     class="form-control"
+                     name="customArtistName"
+                     placeholder="{{ artistJustSearched }}"
+                     id="custom-search">
+              <button ng-click="getLocalConcerts(artistToBeSearched, currentUser.zip)"
+                      type="submit"
+                      class="btn btn-primary">Search</button>
+            </div>
+
+        </div>
+
+      </form>
     </div>
 
     <div class="col-sm-9">
@@ -65,17 +89,17 @@
       <hr>
 
       <div ng-hide="localConcerts.length > 0">
-        <p ng-if="artistBeingSearched">
-          Sorry, no concerts found for {{ artistBeingSearched }}.
+        <p ng-if="artistJustSearched">
+          Sorry, no concerts found for {{ artistJustSearched }}.
         </p>
-        <p ng-if="!artistBeingSearched">
+        <p ng-if="!artistJustSearched">
           Your search results will appear here.
         </p>
       </div>
 
       <div ng-show="localConcerts.length > 0">
         <p>
-          Here is a list of concerts within 50 miles of {{ currentUser.zip }}.
+          Here is a list of {{ artistJustSearched }} concerts within 50 miles of {{ currentUser.zip }}.
         </p>
         <ul ng-repeat="concert in localConcerts | orderBy: 'date'" class="list-unstyled concert-list">
           <li>
