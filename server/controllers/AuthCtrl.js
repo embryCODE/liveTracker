@@ -4,6 +4,9 @@ var passport = require('passport')
 var SpotifyStrategy = require('passport-spotify').Strategy
 var User = require('../models').User
 
+var HOST = process.env.PROD_HOST || 'http://localhost:3000'
+var CALLBACK_URL = HOST + '/auth/callback'
+
 var appKey = require('../../config/apiConfig').spotify.client_id
 var appSecret = require('../../config/apiConfig').spotify.client_secret
 
@@ -20,7 +23,7 @@ passport.deserializeUser(function (id, done) {
 passport.use(new SpotifyStrategy({
   clientID: appKey,
   clientSecret: appSecret,
-  callbackURL: 'http://localhost:3000/auth/callback'
+  callbackURL: CALLBACK_URL
 },
   function (accessToken, refreshToken, profile, done) {
     User.findOne({
