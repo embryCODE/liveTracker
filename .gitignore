@@ -1,2 +1,5 @@
 node_modules
 client/vendor
+
+config/apiConfig.js
+config/db.js
