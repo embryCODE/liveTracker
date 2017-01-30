@@ -1,18 +1,17 @@
-'use strict';
+'use strict'
 
-angular.module('mean_template')
-  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-
+angular.module('liveTracker')
+  .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
-      .when('/things', {
-        templateUrl: 'views/things.html',
-        controller: 'ThingCtrl'
-      });
+      .when('/login', {
+        templateUrl: 'views/login.html'
+      })
+      .otherwise({ redirectTo: '/' })
 
-    $locationProvider.html5Mode(true);
-
-  }]);
+    // removes '#!' from url
+    $locationProvider.html5Mode(true)
+  }])

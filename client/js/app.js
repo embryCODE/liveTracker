@@ -1,3 +1,3 @@
-'use strict';
+'use strict'
 
-angular.module('mean_template', ['ngRoute']);
+angular.module('liveTracker', ['ngRoute'])

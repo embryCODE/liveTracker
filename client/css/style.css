@@ -1,1 +1,149 @@
+/* body padding to compensate for sticky nav */
+body {
+  padding-top: 60px;
+}
 
+#zip-form, .zip-btn, .zip-validation-error {
+  width: 200px;
+}
+
+#zip-form {
+  margin-bottom: 5px;
+}
+
+.profile-name {
+  margin-bottom: 15px;
+}
+
+.top-artists-list {
+  padding-left: 15px;
+}
+
+.concert-list {
+  margin-top: 15px;
+}
+
+.zip-validation-error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+
+/* custom color scheme */
+
+.body {
+  background-color: #222222;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #A9C8E9;
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: #FFFFFB;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #A9C8E9;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+  color: #FFFFFB;
+  background-color: transparent;
+}
+
+.btn-primary {
+  color: #222222;
+  background-color: #A9C8E9;
+  border-color: #A9C8E9;
+}
+
+.btn-primary:hover {
+    color: #FFFFFB;
+    background-color: #48649F;
+    border-color: #48649F;
+}
+
+.jumbotron {
+  background-color: #e5ebf2;
+}
+
+.shiny-btn-section {
+  border-radius: 5px;
+  padding: 20px 0px;
+  background-color: #222222;
+  color: #FFFFFB;
+}
+
+.btn {
+  transition: all 0.3s ease 0s;
+}
+
+
+
+/* zip section */
+
+.zip-section img {
+  margin-top: 20px;
+}
+
+.zip-section h2 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.zip-section p {
+  margin-bottom: 20px;
+}
+
+.zip-top-20 {
+  margin-top: 30px;
+  padding: 15px 0;
+  border-radius: 6px;
+  background-color: #222222;
+  color: #A9C8E9
+}
+
+.zip-top-20 h3 {
+  color: #fffffb
+}
+
+.zip-top-20 ul {
+  margin: 20px 0;
+}
+
+
+
+/* select section */
+
+.select-section h4 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.local-concerts {
+  margin-top: 30px;
+}
+
+.main-img {
+  margin-top: 25px;
+}
+
+footer {
+  padding: 10px 0;
+  background-color: #D0DCE8;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+}
+footer a {
+  color: inherit;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #48649F;
+}

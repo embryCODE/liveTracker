@@ -4,7 +4,8 @@
   "description": "Capstone project for Treehouse Techdegree",
   "author": "mason@embrycode.com",
   "scripts": {
-    "start": "node ./server/bin/www"
+    "start": "node ./server/bin/www",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,19 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.14.0",
+    "express-session": "^1.14.2",
     "method-override": "^2.3.7",
     "mongoose": "^4.7.6",
-    "morgan": "~1.7.0"
+    "morgan": "~1.7.0",
+    "node-jambase": "^1.0.1",
+    "passport": "^0.3.2",
+    "passport-spotify": "^0.3.0",
+    "spotify-web-api-node": "^2.3.6"
+  },
+  "standard": {
+    "globals": "angular"
+  },
+  "engines": {
+    "node": "7.4.0"
   }
 }
