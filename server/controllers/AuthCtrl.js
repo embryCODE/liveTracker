@@ -4,7 +4,7 @@ var passport = require('passport')
 var SpotifyStrategy = require('passport-spotify').Strategy
 var User = require('../models').User
 
-var PORT = process.eng.PORT || 3000
+var PORT = process.env.PORT || 3000
 var HOST = process.env.PROD_HOST || 'http://localhost:' + PORT
 var CALLBACK_URL = HOST + '/auth/callback'
 
