@@ -129,3 +129,21 @@ body {
 .main-img {
   margin-top: 25px;
 }
+
+footer {
+  padding: 10px 0;
+  background-color: #D0DCE8;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+}
+footer a {
+  color: inherit;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #48649F;
+}
