@@ -4,8 +4,8 @@ var User = require('../models').User
 var SpotifyWebAPI = require('spotify-web-api-node')
 
 var spotifyAPI = new SpotifyWebAPI({
-  clientId: require('../../config/apiConfig').spotify.client_id,
-  clientSecret: require('../../config/apiConfig').spotify.client_secret,
+  clientId: process.env.SPOTIFY_CLIENT_ID || require('../../config/apiConfig').spotify.client_id,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET || require('../../config/apiConfig').spotify.client_secret,
   redirectUri: 'http://localhost:3000/auth/callback'
 })
 
