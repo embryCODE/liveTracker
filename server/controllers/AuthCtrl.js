@@ -8,8 +8,8 @@ var PORT = process.env.PORT || 3000
 var HOST = process.env.PROD_HOST || 'http://localhost:' + PORT
 var CALLBACK_URL = HOST + '/auth/callback'
 
-var appKey = require('../../config/apiConfig').spotify.client_id
-var appSecret = require('../../config/apiConfig').spotify.client_secret
+var appKey = process.env.SPOTIFY_CLIENT_ID || require('../../config/apiConfig').spotify.client_id
+var appSecret = process.env.SPOTIFY_CLIENT_SECRET || require('../../config/apiConfig').spotify.client_secret
 
 passport.serializeUser(function (user, done) {
   done(null, user._id)

@@ -1,7 +1,7 @@
 'use strict'
 
 var JamBase = require('node-jambase')
-var key = require('../../config/apiConfig').jambase.api_key
+var key = process.env.JAMBASE_API_KEY || require('../../config/apiConfig').jambase.api_key
 var jambase = new JamBase(key)
 var mockData = require('../../mock/jambaseMock.json')
 
