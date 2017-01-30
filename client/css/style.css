@@ -1,5 +1,5 @@
-
 /* body padding to compensate for sticky nav */
+
 body {
   padding-top: 60px;
 }
@@ -27,4 +27,60 @@ body {
 .zip-validation-error {
   color: red;
   margin-bottom: 10px;
+}
+
+
+/* custom color scheme */
+
+.body {
+  background-color: #222222;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #A9C8E9;
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: #FFFFFB;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #A9C8E9;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+  color: #FFFFFB;
+  background-color: transparent;
+}
+
+.btn-primary {
+  color: #222222;
+  background-color: #A9C8E9;
+  border-color: #A9C8E9;
+}
+
+.btn-primary:hover {
+    color: #FFFFFB;
+    background-color: #48649F;
+    border-color: #48649F;
+}
+
+.jumbotron {
+  background-color: #e5ebf2;
+}
+
+img {
+  border-radius: 5px;
+}
+
+.shiny-btn-section {
+  border-radius: 5px;
+  padding: 20px 0px;
+  background-color: #222222;
+  color: #FFFFFB;
+}
+
+.btn {
+  transition: all 0.3s ease 0s;
 }
