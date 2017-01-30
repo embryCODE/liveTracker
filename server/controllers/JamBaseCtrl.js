@@ -6,7 +6,7 @@ var jambase = new JamBase(key)
 var mockData = require('../../mock/jambaseMock.json')
 
 // boolean flag for using mock data or using jambase api.
-var mock = true
+var mock = false
 
 // if mock is true, just send mock data. otherwise, talk to jambase.
 if (mock) {
