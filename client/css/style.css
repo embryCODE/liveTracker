@@ -1,6 +1,7 @@
 /* body padding to compensate for sticky nav */
 body {
   padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 #zip-form, .zip-btn, .zip-validation-error {
