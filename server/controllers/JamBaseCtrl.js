@@ -1,7 +1,10 @@
 'use strict'
 
 var JamBase = require('node-jambase')
-var key = process.env.JAMBASE_API_KEY || require('../../config/apiConfig').jambase.api_key
+
+// use either heroku env variables or apiConfig.js for api key
+var key = process.env.JAMBASE_API_KEY ||
+          require('../../config/apiConfig').jambase.api_key
 var jambase = new JamBase(key)
 var mockData = require('../../mock/jambaseMock.json')
 
@@ -23,7 +26,7 @@ if (mock) {
 } else {
   // get local concerts using data.zip and data.artistName on req object
   module.exports.getLocalConcerts = function getLocalConcerts (req, res, next) {
-    // set date variables
+    // set date variables to find one year's worth of shows
     var today = new Date().toISOString()
     var nextYear = new Date()
     nextYear.setDate(nextYear.getDate() + 365)
@@ -31,6 +34,7 @@ if (mock) {
 
     var artistName = req.query.artist
 
+    // first, get artist by name to find artistId
     jambase.getArtistBy_name(artistName, 0, function (err, response) {
       if (err) return next(err)
 
@@ -39,10 +43,12 @@ if (mock) {
         var artistId = response.Artists[0].Id
         var zip = parseInt(req.query.zip)
 
+        // then use artistId to find local concerts
         jambase.getEventListBy_artistId_zipCode_radius_startDate_endDate(
           artistId, zip, 50, today, nextYear, 0, function (err, response) {
             if (err) return next(err)
-            // formats concerts from response to only the data needed
+
+            // format the concertList with only the needed data
             var concertList = formatConcerts(artistName, response)
             res.send(concertList)
           })
@@ -55,10 +61,11 @@ if (mock) {
   }
 }
 
+// removes unneeded data from api and returns clean concert list
 function formatConcerts (artistName, rawConcertList) {
   var formattedConcertList = []
 
-  // loop through each Event and get only the data needed
+  // loop through each event and get only the data needed
   rawConcertList.Events.forEach(function (concert) {
     var formattedConcert = {
       name: artistName,

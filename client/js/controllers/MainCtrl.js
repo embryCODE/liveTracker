@@ -18,6 +18,7 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
       $location.path('/login')
     })
 
+  // add zip code to user. takes user id (string) and zip code (number). returns user.
   $scope.addZip = function (id, zipToAdd) {
     apiService.addZipCodeToUser(id, zipToAdd)
       .then(function (response) {
@@ -28,6 +29,7 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
     )
   }
 
+  // returns array of local concerts. takes artistName and user's zip
   $scope.getLocalConcerts = function (artistName, zip) {
     $scope.artistJustSearched = artistName
     $scope.localConcerts = []

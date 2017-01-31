@@ -1,3 +1,5 @@
+// enter path to your local database
+
 'use strict'
 
 module.exports = {

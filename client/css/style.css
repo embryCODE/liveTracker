@@ -1,36 +1,12 @@
-/* body padding to compensate for sticky nav */
+/* GLOBAL */
+
+
+/* body padding to compensate for sticky navs */
+
 body {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-
-#zip-form, .zip-btn, .zip-validation-error {
-  width: 200px;
-}
-
-#zip-form {
-  margin-bottom: 5px;
-}
-
-.profile-name {
-  margin-bottom: 15px;
-}
-
-.top-artists-list {
-  padding-left: 15px;
-}
-
-.concert-list {
-  margin-top: 15px;
-}
-
-.zip-validation-error {
-  color: red;
-  margin-bottom: 10px;
-}
-
-
-/* custom color scheme */
 
 .body {
   background-color: #222222;
@@ -61,9 +37,9 @@ body {
 }
 
 .btn-primary:hover {
-    color: #FFFFFB;
-    background-color: #48649F;
-    border-color: #48649F;
+  color: #FFFFFB;
+  background-color: #48649F;
+  border-color: #48649F;
 }
 
 .jumbotron {
@@ -82,8 +58,7 @@ body {
 }
 
 
-
-/* zip section */
+/* ZIP SECTION */
 
 .zip-section img {
   margin-top: 20px;
@@ -114,9 +89,21 @@ body {
   margin: 20px 0;
 }
 
+.zip-validation-error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+#zip-form, .zip-btn, .zip-validation-error {
+  width: 200px;
+}
+
+#zip-form {
+  margin-bottom: 5px;
+}
 
 
-/* select section */
+/* MAIN SECTION */
 
 .select-section h4 {
   margin-top: 20px;
@@ -131,6 +118,14 @@ body {
   margin-top: 25px;
 }
 
+.profile-name {
+  margin-bottom: 15px;
+}
+
+.concert-list {
+  margin-top: 15px;
+}
+
 footer {
   padding: 10px 0;
   background-color: #D0DCE8;
@@ -140,6 +135,7 @@ footer p {
   margin: 0;
   padding: 0;
 }
+
 footer a {
   color: inherit;
 }

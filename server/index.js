@@ -12,8 +12,10 @@ var routes = require('./routes')
 var session = require('express-session')
 var app = express()
 
-// database connection
+// using default promise library for mongoose
 mongoose.Promise = global.Promise
+
+// use database connection from heroku env variable or db.js
 var db = require('../config/db')
 mongoose.connect(process.env.MONGODB_URI || db.url)
 

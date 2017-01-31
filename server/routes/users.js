@@ -6,7 +6,6 @@ var spotifyCtrl = require('../controllers').SpotifyCtrl
 var jamBaseCtrl = require('../controllers').JamBaseCtrl
 var mid = require('../middleware')
 
-// get currently authenticated user
 router.get('/current-user', mid.authCheck, userCtrl.getCurrentUser)
 
 router.get('/users', userCtrl.getAllUsers)
