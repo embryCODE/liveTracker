@@ -21,7 +21,7 @@ This app makes it easy to retrieve your top 20 favorite artists from Spotify and
   * Bower
   * Bootstrap
 2. Backend
-  * Mongo and Mongoose
+  * MongoDB and Mongoose
   * Express
   * Node.js
 3. APIs
