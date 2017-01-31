@@ -4,6 +4,8 @@ Capstone project for Treehouse Techdegree.
 
 *Mason Embry - mason@embrycode.com*
 
+See a live version at https://live-tracker.herokuapp.com/
+
 ## Project Instructions
 
 *From Treehouse:* 
@@ -38,5 +40,3 @@ This app makes it easy to retrieve your top 20 favorite artists from Spotify and
 2. Add your api keys to `config/apiConfigEXAMPLE.js` and rename to `apiConfig.js`.
 3. Setup your local Mongo database and enter path in `config/db.js`.
 4. Run `npm start` or `nodemon` at project root.
-
-See a live version at https://live-tracker.herokuapp.com/
