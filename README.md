@@ -8,6 +8,8 @@ See a live version at https://live-tracker.herokuapp.com/
 
 ## Project Instructions
 
+https://teamtreehouse.com/projects/capstone-project-build-your-own-web-application
+
 *From Treehouse:* 
 
 In this final, "Capstone" project, you'll bring together everything you've learned to create your own web application. You'll need to build all aspects of the site including an interactive front end. On the backend you'll manage data with a database and talk to at least two other web sites by connecting to their APIs. Finally, you'll host this site on the web so the world can see your finished, running web application.
