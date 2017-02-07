@@ -57,6 +57,17 @@ body {
   transition: all 0.3s ease 0s;
 }
 
+/* LOGIN SECTION */
+
+.jumbotron {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.shiny-btn-section p {
+  margin-bottom: 12px;
+}
+
 
 /* ZIP SECTION */
 
