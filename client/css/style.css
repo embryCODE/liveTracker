@@ -42,8 +42,19 @@ body {
   border-color: #48649F;
 }
 
+.btn {
+  transition: all 0.3s ease 0s;
+}
+
+/* LOGIN SECTION */
+
 .jumbotron {
   background-color: #e5ebf2;
+  background-image: url("../img/crowd-blue-web.jpg");
+  background-size: cover;
+  height: 500px;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .shiny-btn-section {
@@ -53,19 +64,30 @@ body {
   color: #FFFFFB;
 }
 
-.btn {
-  transition: all 0.3s ease 0s;
-}
-
-/* LOGIN SECTION */
-
-.jumbotron {
-  padding-top: 40px;
-  padding-bottom: 20px;
-}
-
 .shiny-btn-section p {
   margin-bottom: 12px;
+}
+
+@media (max-width: 991px) {
+  .container {
+    width: 100%;
+  }
+  .jumbotron h1 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 611px) {
+
+  .jumbotron {
+    padding-top: 15px;
+    height: 400px;
+  }
+
+  .jumbotron p {
+    margin-top: 180px;
+    color: white;
+  }
 }
 
 
