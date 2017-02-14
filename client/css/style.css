@@ -46,7 +46,13 @@ body {
   transition: all 0.3s ease 0s;
 }
 
+
 /* LOGIN SECTION */
+
+.login-wrapper {
+  padding: 0;
+  width: 100%;
+}
 
 .jumbotron {
   background-color: #e5ebf2;
@@ -54,40 +60,22 @@ body {
   background-size: cover;
   height: 500px;
   padding-top: 40px;
-  padding-bottom: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  top: -10px;
+}
+
+.container .jumbotron {
+  border-radius: 0;
 }
 
 .shiny-btn-section {
-  border-radius: 5px;
-  padding: 20px 0px;
-  background-color: #222222;
-  color: #FFFFFB;
+  padding: 0;
+  color: black;
 }
 
 .shiny-btn-section p {
   margin-bottom: 12px;
-}
-
-@media (max-width: 991px) {
-  .container {
-    width: 100%;
-  }
-  .jumbotron h1 {
-    font-size: 50px;
-  }
-}
-
-@media (max-width: 611px) {
-
-  .jumbotron {
-    padding-top: 15px;
-    height: 400px;
-  }
-
-  .jumbotron p {
-    margin-top: 180px;
-    color: white;
-  }
 }
 
 
@@ -176,4 +164,27 @@ footer a {
 footer a:hover {
   text-decoration: none;
   color: #48649F;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 991px) {
+  .container {
+    width: 100%;
+  }
+  .jumbotron h1 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 611px) {
+  .jumbotron {
+    padding-top: 15px;
+    height: 400px;
+  }
+  .jumbotron p {
+    margin-top: 180px;
+    color: white;
+  }
 }
