@@ -1,5 +1,7 @@
 <div ng-if="currentUser" class="container">
 
+  <div ng-include="'views/partials/nav.html'"></div>
+
   <!-- ZIP CODE SECTION -->
   <!-- display if no zip code found -->
   <div ng-if="!currentUser.zip" class="zip-section">
