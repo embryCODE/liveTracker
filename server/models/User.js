@@ -15,7 +15,7 @@ var userSchema = new Schema({
     // Custom validation for zip code format.
     validate: {
       validator: function (zip) {
-        return /(\d{5}([-]\d{4})?)/.test(zip)
+        return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip)
       },
       message: 'Must be a valid zip code.'
     }

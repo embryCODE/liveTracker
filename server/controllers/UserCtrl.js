@@ -44,7 +44,11 @@ module.exports.addZip = function (req, res, next) {
     .then(function (user) {
       user.zip = req.body.zip
       user.save(function (err, updatedUser) {
-        if (err) return next(err)
+        if (err) {
+          var error = new Error()
+          error.message = err.errors.zip.message
+          return next(error)
+        }
         res.json(updatedUser)
       })
     }).catch(function (error) {

@@ -24,6 +24,7 @@ app.controller('MainCtrl', function ($scope, $location, apiService) {
       .then(function (response) {
         $scope.currentUser = response.data
       }, function (err) {
+        console.log('Please enter a valid zip code.')
         console.log(err)
       }
     )
